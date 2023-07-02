@@ -13,7 +13,7 @@ public class Player extends Entity {
     GamePanel gp;
     Movement move;
     public final int screenX,screenY;
-    int hasQuestionCompleted = 0;
+    public int hasQuestionCompleted = 0;
 
 
     public Player(GamePanel gp, Movement move) {
@@ -45,14 +45,14 @@ public class Player extends Entity {
 
         try {
             
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/up_11.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/up_22.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/down_11.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/down_22.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/left_11.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/left_22.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/right_11.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/right_22.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player/up1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player/up2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/down1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/down2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/left1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/left2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/right2.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class Player extends Entity {
 
 
     public void updateScreen(){
-        if(move.upPressed == true || move.downPressed == true || move.leftPressed == true || move.rightPressed == true){
+        if(move.upPressed == true || move.downPressed == true || move.leftPressed == true || move.rightPressed == true || move.sprint == true){
             if(move.upPressed == true){
                 Direction = "up";
             }
@@ -74,6 +74,7 @@ public class Player extends Entity {
             if (move.rightPressed == true){
                 Direction = "right";
             }
+
 
             collisionOn = false;
             gp.cChecker.checkTile(this);
@@ -95,6 +96,8 @@ public class Player extends Entity {
                     case "right":
                         worldX += speed;
                         break;
+
+
                 }
 
             }
@@ -113,8 +116,22 @@ public class Player extends Entity {
     }
     public void pickupObj(int i){ // eto nagaano ng question
         if (i != 999){
-            gp.obj[i] = null;
-           // String objectName = gp.obj[i].name;
+            String objName = gp.obj[i].name;
+
+            switch (objName){
+                case "Question":
+                    gp.playSFX(3);
+                    hasQuestionCompleted++;
+                    gp.obj[i] = null;
+                    System.out.println("Correct Answers: " + hasQuestionCompleted);
+                    break;
+
+                case "Cave":
+                    if (hasQuestionCompleted > 0){
+                        gp.obj[i] = null;
+                        hasQuestionCompleted--;
+                    }
+            }
         }
     }
     public void draw(Graphics2D g2){

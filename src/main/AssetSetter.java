@@ -11,6 +11,10 @@ public class AssetSetter {
     public void setObj(){
         gp.obj[0] = new Obj_Question();
         gp.obj[0].worldX = 1 * gp.TileSize;
-        gp.obj[0].worldY = 1 * gp.TileSize;
+        gp.obj[0].worldY = 2 * gp.TileSize;
+
+        gp.obj[1] = new Obj_Question();
+        gp.obj[1].worldX = 2 * gp.TileSize;
+        gp.obj[1].worldY = 2 * gp.TileSize;
     }
 }

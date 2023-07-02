@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 public class Movement implements KeyListener {
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, sprint;
 
     public Movement(GamePanel gp){
         this.gp = gp;
@@ -53,5 +53,6 @@ public class Movement implements KeyListener {
         if(code == KeyEvent.VK_D){
             rightPressed = false;
         }
+
     }
 }
