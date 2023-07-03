@@ -1,5 +1,7 @@
 package main;
 
+import entity.Entity;
+import entity.NPC_Boss;
 import entity.Player;
 import objects.SuperObj;
 import tile.TileManager;
@@ -26,16 +28,23 @@ public class GamePanel extends JPanel implements Runnable {
     int FPS = 60;
 
     TileManager TileM = new TileManager(this);
-    Movement movement = new Movement(this);
+    public Movement movement = new Movement(this);
     Sound SFX = new Sound();
-    Sound music = new Sound();
-    UI ui = new UI(this);
+    public Sound music = new Sound();
+    public UI ui = new UI(this);
     Thread gameThread;
+    
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this,movement);
     public SuperObj obj[] = new SuperObj[10];
+    public Entity NPC [] = new Entity[3];
 
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+    public final int dialogueState = 3;
+    public final int titleState = 0;
 
 
     public GamePanel() {
@@ -49,7 +58,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
 
         aSetter.setObj();
-        playMusic(0);
+        aSetter.setNPC();
+       // playMusic(0);
+        gameState = titleState;
     }
 
     public void GameStart(){
@@ -57,8 +68,19 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread.start();
     }
     public void updateScreen() {
-
-            player.updateScreen();
+        
+            if(gameState == playState){
+                player.updateScreen();
+                
+                for(int i = 0; i <NPC.length; i++){
+                    if(NPC[i] != null){
+                        NPC[i].update();
+                    }
+                }
+            }
+            if(gameState == pauseState){
+                
+            }
         }
 
 
@@ -97,17 +119,30 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        TileM.draw(g2);
-        for (int i = 0; i < obj.length; i++){
-            if (obj[i] != null){
-                obj[i].draw(g2,this);
-            }
-        }
-        player.draw(g2);
+
+        if (gameState == titleState){
         ui.draw(g2);
+        }else {
+            TileM.draw(g2);
+            for (int i = 0; i < obj.length; i++){
+                if (obj[i] != null){
+                    obj[i].draw(g2,this);
+                }
+            }
+
+            for(int i = 0; i < NPC.length; i++){
+                if (NPC[i] !=null){
+                    NPC[i].draw(g2);
+                }
+            }
+            player.draw(g2);
+            ui.draw(g2);
+        }
+
         g2.dispose();
 
     }
+
     public void playMusic(int i){
         music.setFile(i);
         music.play();

@@ -9,6 +9,7 @@ public class Obj_Question extends SuperObj{
         name = "Question";
         try {
             img = ImageIO.read(getClass().getResourceAsStream("/objs/questionmark.png"));
+
         }catch (IOException e){
         e.printStackTrace();
         }

@@ -8,7 +8,7 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         window.setResizable(false);
-        window.setTitle("Hatdog");
+        window.setTitle("Question Adventure Game");
 
         GamePanel gamepanel = new GamePanel();
         window.add(gamepanel);

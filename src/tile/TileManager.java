@@ -1,6 +1,7 @@
 package tile;
 
 import main.GamePanel;
+import main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -24,107 +25,53 @@ public class TileManager {
     }
 
     public void getTileImage() {
+
+        setup(0,"tile_mainmap/tile001", false);
+        setup(1,"tile_mainmap/tile002", false);
+        setup(2,"tile_mainmap/tile008", false);
+        setup(3,"tile_mainmap/tile009", false);
+        setup(4,"tile_mainmap/tile010", false);
+        setup(5,"tile_mainmap/tile011", false);
+        setup(6,"tile_mainmap/tile012", false);
+        setup(7,"tile_mainmap/tile013", false);
+        setup(8,"tile_mainmap/tile014", false);
+        setup(9,"tile_mainmap/tile015", false);
+        setup(10,"tile_mainmap/tile016", false);
+        setup(11,"tile_mainmap/tile017", false);
+        setup(12,"tile_mainmap/tile018", false);
+        setup(13,"tile_mainmap/tile019", false);
+        setup(14,"tile_mainmap/tile020", false);
+        setup(15,"tile_mainmap/tile024", false);
+        setup(16,"tile_mainmap/tile025", false);
+        setup(17,"tile_mainmap/tile026", false);
+        setup(18,"puno/puno1", true);
+        setup(19,"puno/puno2", true);
+        setup(20,"puno/puno3", true);
+        setup(21,"puno/puno4", true);
+        setup(22,"puno/puno5", true);
+        setup(23,"puno/puno6", true);
+        setup(24,"puno/puno7", true);
+        setup(25,"puno/puno8", true);
+        setup(26,"puno/puno9", true);
+        setup(27,"puno/puno10", true);
+        setup(28,"kweba_entry/kweba1", false);
+        setup(29,"kweba_entry/kweba2", false);
+        setup(30,"kweba_entry/kweba3", false);
+        setup(31,"kweba_entry/kweba4", false);
+
+    }
+
+    public void setup(int index, String imagepath, boolean collision){
+        UtilityTool UTool = new UtilityTool();
         try {
-            tile[0] = new Tiles();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile001.png"));
-
-            tile[1] = new Tiles();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile002.png"));
-
-            tile[2] = new Tiles();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile008.png"));
-
-            tile[3] = new Tiles();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile009.png"));
-
-            tile[4] = new Tiles();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile010.png"));
-
-            tile[5] = new Tiles();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile011.png"));
-
-            tile[6] = new Tiles();
-            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile012.png"));
-
-            tile[7] = new Tiles();
-            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile013.png"));
-
-            tile[8] = new Tiles();
-            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile014.png"));
-
-            tile[9] = new Tiles();
-            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile015.png"));
-
-            tile[10] = new Tiles();
-            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile016.png"));
-
-            tile[11] = new Tiles();
-            tile[11].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile017.png"));
-
-            tile[12] = new Tiles();
-            tile[12].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile018.png"));
-
-            tile[13] = new Tiles();
-            tile[13].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile019.png"));
-
-            tile[14] = new Tiles();
-            tile[14].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile020.png"));
-
-            tile[15] = new Tiles();
-            tile[15].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile024.png"));
-
-            tile[16] = new Tiles();
-            tile[16].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile025.png"));
-
-            tile[17] = new Tiles();
-            tile[17].image = ImageIO.read(getClass().getResourceAsStream("/tile/tile_mainmap/tile026.png"));
-
-            tile[18] = new Tiles();
-            tile[18].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno1.png"));
-            tile[18].collision = true;
-
-            tile[19] = new Tiles();
-            tile[19].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno2.png"));
-
-            tile[20] = new Tiles();
-            tile[20].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno3.png"));
-
-            tile[21] = new Tiles();
-            tile[21].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno4.png"));
-
-            tile[22] = new Tiles();
-            tile[22].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno5.png"));
-
-            tile[23] = new Tiles();
-            tile[23].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno6.png"));
-            tile[23].collision = true;
-
-            tile[24] = new Tiles();
-            tile[24].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno7.png"));
-
-            tile[25] = new Tiles();
-            tile[25].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno8.png"));
-
-            tile[26] = new Tiles();
-            tile[26].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno9.png"));
-
-            tile[27] = new Tiles();
-            tile[27].image = ImageIO.read(getClass().getResourceAsStream("/tile/puno/puno10.png"));
-
-            tile[28] = new Tiles();
-            tile[28].image = ImageIO.read(getClass().getResourceAsStream("/tile/kweba_entry/kweba1.png"));
-
-            tile[29] = new Tiles();
-            tile[29].image = ImageIO.read(getClass().getResourceAsStream("/tile/kweba_entry/kweba2.png"));
-
-            tile[30] = new Tiles();
-            tile[30].image = ImageIO.read(getClass().getResourceAsStream("/tile/kweba_entry/kweba3.png"));
-
-            tile[31] = new Tiles();
-            tile[31].image = ImageIO.read(getClass().getResourceAsStream("/tile/kweba_entry/kweba4.png"));
+            tile[index] = new Tiles();
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tile/" + imagepath +".png"));
+            tile[index].image = UTool.scaledImage(tile[index].image,gp.TileSize, gp.TileSize);
+            tile[index].collision = collision;
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
     public void loadMap(){
         try {

@@ -1,5 +1,6 @@
 package main;
 
+import entity.NPC_Boss;
 import objects.Obj_Question;
 
 public class AssetSetter {
@@ -16,5 +17,10 @@ public class AssetSetter {
         gp.obj[1] = new Obj_Question();
         gp.obj[1].worldX = 2 * gp.TileSize;
         gp.obj[1].worldY = 2 * gp.TileSize;
+    }
+    public void setNPC(){
+        gp.NPC[0] = new NPC_Boss(gp);
+        gp.NPC[0].worldX = 5*gp.TileSize;
+        gp.NPC[0].worldY = 5*gp.TileSize;
     }
 }

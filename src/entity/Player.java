@@ -3,28 +3,26 @@ package entity;
 import main.GamePanel;
 import main.Movement;
 
-import javax.imageio.ImageIO;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import java.io.IOException;
-
 public class Player extends Entity {
-    GamePanel gp;
+
     Movement move;
-    public final int screenX,screenY;
+    public final int screenX, screenY;
     public int hasQuestionCompleted = 0;
 
 
     public Player(GamePanel gp, Movement move) {
-
+        super(gp);
         this.gp = gp;
         this.move = move;
 
-        screenX = gp.screenWidth/2 - (gp.TileSize/2);
-        screenY = gp.screenHeight/2 - (gp.TileSize/2);
+        screenX = gp.screenWidth / 2 - (gp.TileSize / 2);
+        screenY = gp.screenHeight / 2 - (gp.TileSize / 2);
 
-        solidArea = new Rectangle(16,24,15,5);
+        solidArea = new Rectangle(6, 24, 36, 5);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -35,33 +33,33 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        worldX  = gp.TileSize * 8;
-        worldY = gp.TileSize * 6;
+        worldX = gp.TileSize * 9;
+        worldY = gp.TileSize * 12;
         speed = 4;
         Direction = "down";
     }
 
     public void getPlayerImage() {
 
-        try {
-            
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/up1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/up2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/down1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/down2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/left1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/left2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/right2.png"));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        up1 = setup("/player/up1");
+        up2 = setup("/player/up2");
+        down1 = setup("/player/down1");
+        down2 = setup("/player/down2");
+        left1 = setup("/player/left1");
+        left2 = setup("/player/left2");
+        right1 = setup("/player/right1");
+        right2 = setup("/player/right2");
     }
 
 
+
+
+
+
+
+
     public void updateScreen(){
-        if(move.upPressed == true || move.downPressed == true || move.leftPressed == true || move.rightPressed == true || move.sprint == true){
+        if(move.upPressed == true || move.downPressed == true || move.leftPressed == true || move.rightPressed == true ){
             if(move.upPressed == true){
                 Direction = "up";
             }
@@ -80,6 +78,9 @@ public class Player extends Entity {
             gp.cChecker.checkTile(this);
             int objIndex = gp.cChecker.checkObj(this, true);
             pickupObj(objIndex);
+            
+            int npcIndex = gp.cChecker.checkEntity(this, gp.NPC);
+            interactNPC(npcIndex);
 
             if(collisionOn == false){
 
@@ -124,6 +125,7 @@ public class Player extends Entity {
                     hasQuestionCompleted++;
                     gp.obj[i] = null;
                     System.out.println("Correct Answers: " + hasQuestionCompleted);
+                    gp.ui.showMessage("Congratulations! Please proceed to the next room.");
                     break;
 
                 case "Cave":
@@ -131,9 +133,35 @@ public class Player extends Entity {
                         gp.obj[i] = null;
                         hasQuestionCompleted--;
                     }
+                    else{
+                        gp.ui.showMessage("You need a key!");
+                    }
+                    break;
+                    
+                case "Final Boss":
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();;
+                    gp.playSFX(3); //change to sfx game ending later
+                    break;
             }
         }
     }
+    
+    public void interactNPC(int i){
+    
+        if (i != 999){
+            if (gp.movement.enterPressed == true){
+                gp.gameState = gp.dialogueState;
+                gp.music.stop();
+                gp.NPC[i].speak();
+            }
+
+        }
+        gp.movement.enterPressed = false;
+
+        
+    }
+    
     public void draw(Graphics2D g2){
         BufferedImage img = null;
         switch (Direction){
