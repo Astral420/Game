@@ -24,6 +24,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
+    public final int maxMap = 10;
+    public int currentMap  = 0;
 
     int FPS = 60;
 
@@ -37,8 +39,8 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this,movement);
-    public SuperObj obj[] = new SuperObj[10];
-    public Entity NPC [] = new Entity[3];
+    public SuperObj obj[][] = new SuperObj[maxMap][100];
+    public Entity NPC [] []= new Entity[maxMap][3];
 
     public int gameState;
     public final int playState = 1;
@@ -72,16 +74,18 @@ public class GamePanel extends JPanel implements Runnable {
             if(gameState == playState){
                 player.updateScreen();
                 
-                for(int i = 0; i <NPC.length; i++){
-                    if(NPC[i] != null){
-                        NPC[i].update();
+                for(int i = 0; i <NPC[1].length; i++){
+                    if(NPC[currentMap][i] != null){
+                        NPC[currentMap][i].update();
                     }
                 }
             }
             if(gameState == pauseState){
                 
             }
+
         }
+
 
 
 
@@ -124,15 +128,15 @@ public class GamePanel extends JPanel implements Runnable {
         ui.draw(g2);
         }else {
             TileM.draw(g2);
-            for (int i = 0; i < obj.length; i++){
-                if (obj[i] != null){
-                    obj[i].draw(g2,this);
+            for (int i = 0; i < obj[1].length; i++){
+                if (obj[currentMap][i] != null){
+                    obj[currentMap][i].draw(g2,this);
                 }
             }
 
-            for(int i = 0; i < NPC.length; i++){
-                if (NPC[i] !=null){
-                    NPC[i].draw(g2);
+            for(int i = 0; i < NPC[1].length; i++){
+                if (NPC[currentMap][i] !=null){
+                    NPC[currentMap][i].draw(g2);
                 }
             }
             player.draw(g2);

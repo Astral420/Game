@@ -4,7 +4,6 @@ package main;
 
 import objects.Obj_Question;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
@@ -28,7 +27,8 @@ public class UI {
         this.gp = gp;
         arial_40 = new Font("Arial", Font.PLAIN, 40);
         arial_80B = new Font("Arial", Font.BOLD, 80);
-
+        Obj_Question question = new Obj_Question();
+        questionimg = question.img;
 
     }
     
@@ -75,8 +75,11 @@ public class UI {
         if (gp.gameState == gp.dialogueState){
             drawDialogueScreen();
         }
+
           
 }
+
+
     public void drawPauseScreen(){
         g2.setFont(g2.getFont().deriveFont(60F));
         String text = "PAUSED";

@@ -22,7 +22,7 @@ public class Player extends Entity {
         screenX = gp.screenWidth / 2 - (gp.TileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.TileSize / 2);
 
-        solidArea = new Rectangle(6, 24, 36, 5);
+        solidArea = new Rectangle(6, 6, 36, 38);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -33,8 +33,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        worldX = gp.TileSize * 9;
-        worldY = gp.TileSize * 12;
+        worldX = gp.TileSize * 42;
+        worldY = gp.TileSize * 4;
         speed = 4;
         Direction = "down";
     }
@@ -79,7 +79,7 @@ public class Player extends Entity {
             int objIndex = gp.cChecker.checkObj(this, true);
             pickupObj(objIndex);
             
-            int npcIndex = gp.cChecker.checkEntity(this, gp.NPC);
+            int npcIndex = gp.cChecker.checkEntity(this, gp.NPC[1]);
             interactNPC(npcIndex);
 
             if(collisionOn == false){
@@ -117,27 +117,37 @@ public class Player extends Entity {
     }
     public void pickupObj(int i){ // eto nagaano ng question
         if (i != 999){
-            String objName = gp.obj[i].name;
+            String objName = gp.obj[gp.currentMap][i].name;
 
             switch (objName){
                 case "Question":
                     gp.playSFX(3);
                     hasQuestionCompleted++;
-                    gp.obj[i] = null;
+                    gp.obj[gp.currentMap][i] = null;
                     System.out.println("Correct Answers: " + hasQuestionCompleted);
                     gp.ui.showMessage("Congratulations! Please proceed to the next room.");
                     break;
 
-                case "Cave":
+//                case "Cave":
+//                    if (hasQuestionCompleted > 0){
+//                        gp.obj[i] = null;
+//                        hasQuestionCompleted--;
+//                    }
+//                    else{
+//                        gp.ui.showMessage("You need a key!");
+//                    }
+//                    break;
+                case "Obstacle":
                     if (hasQuestionCompleted > 0){
-                        gp.obj[i] = null;
+                        gp.playSFX(3);
+                        gp.obj[gp.currentMap][i] = null;
                         hasQuestionCompleted--;
+                        gp.ui.showMessage("Obstacle Removed!");
                     }
                     else{
                         gp.ui.showMessage("You need a key!");
                     }
                     break;
-                    
                 case "Final Boss":
                     gp.ui.gameFinished = true;
                     gp.stopMusic();;
@@ -152,8 +162,7 @@ public class Player extends Entity {
         if (i != 999){
             if (gp.movement.enterPressed == true){
                 gp.gameState = gp.dialogueState;
-                gp.music.stop();
-                gp.NPC[i].speak();
+                gp.NPC[gp.currentMap][i].speak();
             }
 
         }

@@ -1,0 +1,6 @@
+Question: What is the capital of France?
+A) Paris
+B) Rome
+C) London
+D) Madrid
+Correct Answer: A

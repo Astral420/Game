@@ -2,12 +2,12 @@ package main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+import java.security.Key;
 
 
 public class Movement implements KeyListener {
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, RPressed;
 
     public Movement(GamePanel gp){
         this.gp = gp;
@@ -41,7 +41,7 @@ public class Movement implements KeyListener {
             
                 if(gp.ui.commandNum == 0){
                     gp.gameState = gp.playState;
-                    gp.playMusic(0);
+//                    gp.playMusic(0);
                 }
                 if(gp.ui.commandNum == 1){
                     //for leaderboards later
@@ -69,12 +69,11 @@ public class Movement implements KeyListener {
             }
             if(code == KeyEvent.VK_P){
                 gp.gameState = gp.pauseState;
-
             }
             if(code == KeyEvent.VK_ENTER){
                 enterPressed = true;
-
             }
+
         }
         else if (gp.gameState == gp.pauseState){
             if(code == KeyEvent.VK_P){
@@ -83,9 +82,11 @@ public class Movement implements KeyListener {
             }
         }
         else if (gp.gameState == gp.dialogueState){
+
             if(code == KeyEvent.VK_ENTER){
                 gp.gameState = gp.playState;
             }
+
         }
 
         }
