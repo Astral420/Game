@@ -18,6 +18,7 @@ public class UI {
     public boolean gameFinished = false;
     public String currentDialogue = "";
     public int commandNum = 0;
+    int substate = 0;
     
     double playTime;
     DecimalFormat df = new DecimalFormat("#0.00");
@@ -75,10 +76,58 @@ public class UI {
         if (gp.gameState == gp.dialogueState){
             drawDialogueScreen();
         }
+        if (gp.gameState == gp.optionState){
+            drawOptionScreen();
+        }
 
           
 }
 
+    public void drawOptionScreen() {
+        g2.setColor(Color.WHITE);
+        g2.setFont(g2.getFont().deriveFont(32F));
+
+        int frameX = gp.TileSize*4;
+        int frameY = gp.TileSize;
+        int frameWidth = gp.TileSize*8;
+        int frameHeight = gp.TileSize*9;
+        drawSubWindow(frameX,frameY,frameWidth,frameHeight);
+
+        switch (substate){
+            case 0:
+                options_top( frameX,  frameY);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+
+        }
+
+    }
+    public void options_top(int frameX, int frameY){
+        int textX;
+        int textY;
+
+        String text = "Options";
+        textX = getXforCenteredText(text);
+        textY = frameY + gp.TileSize;
+        g2.drawString(text,textX,textY);
+
+        textX = frameX + gp.TileSize;
+        textY += gp.TileSize;
+        g2.drawString("Music",textX,textY);
+
+        textY += gp.TileSize;
+        g2.drawString("SFX",textX,textY);
+
+        textY += gp.TileSize;
+        g2.drawString("Exit",textX,textY);
+
+        textY += gp.TileSize*2.5;
+        g2.drawString("Back",textX,textY);
+
+    }
 
     public void drawPauseScreen(){
         g2.setFont(g2.getFont().deriveFont(60F));

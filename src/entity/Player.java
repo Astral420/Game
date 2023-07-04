@@ -139,7 +139,7 @@ public class Player extends Entity {
 //                    break;
                 case "Obstacle":
                     if (hasQuestionCompleted > 0){
-                        gp.playSFX(3);
+                        gp.playSFX(2);
                         gp.obj[gp.currentMap][i] = null;
                         hasQuestionCompleted--;
                         gp.ui.showMessage("Obstacle Removed!");

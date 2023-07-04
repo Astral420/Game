@@ -7,7 +7,7 @@ import java.security.Key;
 
 public class Movement implements KeyListener {
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, RPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, EscPressed;
 
     public Movement(GamePanel gp){
         this.gp = gp;
@@ -23,73 +23,104 @@ public class Movement implements KeyListener {
         int code = e.getKeyCode();
         
         if(gp.gameState == gp.titleState){
-            
-            if (code == KeyEvent.VK_W) {
-                gp.ui.commandNum--;
-                    if(gp.ui.commandNum < 0){
-                        gp.ui.commandNum = 2;
-                    }
-            }
-            if (code == KeyEvent.VK_S) {
-                gp.ui.commandNum++;
-                    if(gp.ui.commandNum > 2){
-                        gp.ui.commandNum = 0;
-                    }
-            }
-            
-            if(code == KeyEvent.VK_ENTER){
-            
-                if(gp.ui.commandNum == 0){
-                    gp.gameState = gp.playState;
-//                    gp.playMusic(0);
-                }
-                if(gp.ui.commandNum == 1){
-                    //for leaderboards later
-                }
-                if(gp.ui.commandNum == 2){
-                    System.exit(0);
-                }
-                
-            }
+            titleState(code);
+
             
         }
         
         if(gp.gameState == gp.playState){
-            if (code == KeyEvent.VK_W) {
-                upPressed = true;
-            }
-            if (code == KeyEvent.VK_S) {
-                downPressed = true;
-            }
-            if(code == KeyEvent.VK_A){
-                leftPressed = true;
-            }
-            if(code == KeyEvent.VK_D){
-                rightPressed = true;
-            }
-            if(code == KeyEvent.VK_P){
-                gp.gameState = gp.pauseState;
-            }
-            if(code == KeyEvent.VK_ENTER){
-                enterPressed = true;
-            }
-
+            playState(code);
         }
         else if (gp.gameState == gp.pauseState){
-            if(code == KeyEvent.VK_P){
-                gp.gameState = gp.playState;
-
-            }
+            pauseState(code);
         }
         else if (gp.gameState == gp.dialogueState){
+            dialogueState(code);
 
-            if(code == KeyEvent.VK_ENTER){
+        } else if (gp.gameState == gp.optionState) {
+            optionState(code);
+        }
+
+
+    }
+    public void titleState(int code){
+        if (code == KeyEvent.VK_W) {
+            gp.ui.commandNum--;
+            if(gp.ui.commandNum < 0){
+                gp.ui.commandNum = 2;
+            }
+        }
+        if (code == KeyEvent.VK_S) {
+            gp.ui.commandNum++;
+            if(gp.ui.commandNum > 2){
+                gp.ui.commandNum = 0;
+            }
+        }
+
+        if(code == KeyEvent.VK_ENTER){
+
+            if(gp.ui.commandNum == 0){
                 gp.gameState = gp.playState;
+//                    gp.playMusic(0);
+            }
+            if(gp.ui.commandNum == 1){
+                //for leaderboards later
+            }
+            if(gp.ui.commandNum == 2){
+                System.exit(0);
             }
 
         }
+    }
+    public void playState(int code){
+        if (code == KeyEvent.VK_W) {
+            upPressed = true;
+        }
+        if (code == KeyEvent.VK_S) {
+            downPressed = true;
+        }
+        if(code == KeyEvent.VK_A){
+            leftPressed = true;
+        }
+        if(code == KeyEvent.VK_D){
+            rightPressed = true;
+        }
+        if(code == KeyEvent.VK_P){
+            gp.gameState = gp.pauseState;
+        }
+        if(code == KeyEvent.VK_ENTER){
+            enterPressed = true;
+        }
+        if(code == KeyEvent.VK_ESCAPE){
+            gp.gameState = gp.optionState;
+        }
+    }
+    public void optionState(int code){
+        if(code == KeyEvent.VK_ESCAPE){
+            gp.gameState = gp.playState;
+        }
+        if(code == KeyEvent.VK_ENTER){
+            enterPressed = true;
+        }
+    }
+    public void dialogueState(int code){
+        if(code == KeyEvent.VK_ENTER){
+            gp.gameState = gp.playState;
+        } else if (gp.gameState == gp.optionState) {
+            if (code == KeyEvent.VK_ESCAPE){
+                gp.gameState = gp.optionState;
+            }
+        }
+    }
+    public void pauseState(int code){
+        if(code == KeyEvent.VK_P){
+            gp.gameState = gp.playState;
 
         }
+    }
+
+
+
 
     @Override
     public void keyReleased(KeyEvent e) {
