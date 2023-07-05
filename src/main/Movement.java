@@ -9,7 +9,18 @@ public class Movement implements KeyListener {
     GamePanel gp;
     public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
     boolean showDebugText;
-
+    
+    public int QuesLimitDrop1 = 0;
+    public int QuesLimitDrop2 = 1;
+    public int QuesLimitDrop3 = 1;
+    public int QuesLimitDrop4 = 0;
+    public int QuesLimitDrop5 = 1;
+    public int QuesLimitDrop6 = 1;
+    public int QuesLimitDrop7 = 0;
+    public int QuesLimitDrop8 = 1;
+    public int QuesLimitDrop9 = 1;
+    public int QuesLimitDrop10 = 1;
+    
     public Movement(GamePanel gp){
         this.gp = gp;
     }
@@ -63,12 +74,14 @@ public class Movement implements KeyListener {
     }
     public void titleState(int code){
         if (code == KeyEvent.VK_W) {
+            gp.playSFX(4);
             gp.ui.commandNum--;
             if(gp.ui.commandNum < 0){
                 gp.ui.commandNum = 2;
             }
         }
         if (code == KeyEvent.VK_S) {
+            gp.playSFX(4);
             gp.ui.commandNum++;
             if(gp.ui.commandNum > 2){
                 gp.ui.commandNum = 0;
@@ -79,7 +92,7 @@ public class Movement implements KeyListener {
 
             if(gp.ui.commandNum == 0){
                 gp.gameState = gp.playState;
-//                    gp.playMusic(0);
+                    gp.playMusic(0);
             }
             if(gp.ui.commandNum == 1){
                 //for leaderboards later
@@ -189,14 +202,17 @@ public class Movement implements KeyListener {
     
     public void QuestionState1(int code){
         if (code == KeyEvent.VK_W) {
+                gp.playSFX(4);
                 gp.ui.commandNum--;
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
+                gp.playSFX(4);
                 gp.ui.commandNum++;
                     if(gp.ui.commandNum > 2){
+
                         gp.ui.commandNum = 0;
                     }
             }
@@ -204,12 +220,22 @@ public class Movement implements KeyListener {
             if(code == KeyEvent.VK_ENTER){
             
                 if(gp.ui.commandNum == 0){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj1();
+                    
+                    if(QuesLimitDrop1 == 1) {
+                        gp.aSetter.setObj1();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop1 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
+                
                 if(gp.ui.commandNum == 1){
                     gp.gameState = gp.playState;
                 }
+                
                 if(gp.ui.commandNum == 2){
                     gp.gameState = gp.playState;
                 }
@@ -220,12 +246,14 @@ public class Movement implements KeyListener {
     public void QuestionState2(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -237,8 +265,16 @@ public class Movement implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if(gp.ui.commandNum == 1){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj2();
+                    
+                    if(QuesLimitDrop2 == 1) {
+                        gp.aSetter.setObj2();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop2 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 if(gp.ui.commandNum == 2){
                     gp.gameState = gp.playState;
@@ -250,12 +286,14 @@ public class Movement implements KeyListener {
     public void QuestionState3(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -270,8 +308,16 @@ public class Movement implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if(gp.ui.commandNum == 2){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj3();
+                    
+                    if(QuesLimitDrop3 == 1) {
+                        gp.aSetter.setObj3();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop3 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 
             }
@@ -280,12 +326,14 @@ public class Movement implements KeyListener {
     public void QuestionState4(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -300,8 +348,16 @@ public class Movement implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if(gp.ui.commandNum == 2){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj4();
+                    
+                    if(QuesLimitDrop4 == 1) {
+                        gp.aSetter.setObj4();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop4 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 
             }
@@ -310,12 +366,14 @@ public class Movement implements KeyListener {
     public void QuestionState5(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -324,8 +382,16 @@ public class Movement implements KeyListener {
             if(code == KeyEvent.VK_ENTER){
             
                 if(gp.ui.commandNum == 0){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj5();
+                    
+                    if(QuesLimitDrop5 == 1) {
+                        gp.aSetter.setObj5();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop5 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 if(gp.ui.commandNum == 1){
                     gp.gameState = gp.playState;
@@ -340,12 +406,14 @@ public class Movement implements KeyListener {
     public void QuestionState6(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -357,8 +425,16 @@ public class Movement implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if(gp.ui.commandNum == 1){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj6();
+                    
+                    if(QuesLimitDrop6 == 1) {
+                        gp.aSetter.setObj6();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop6 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 if(gp.ui.commandNum == 2){
                     gp.gameState = gp.playState;
@@ -370,12 +446,14 @@ public class Movement implements KeyListener {
     public void QuestionState7(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -387,8 +465,16 @@ public class Movement implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if(gp.ui.commandNum == 1){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj7();
+                    
+                    if(QuesLimitDrop7 == 1) {
+                        gp.aSetter.setObj7();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop7 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 if(gp.ui.commandNum == 2){
                     gp.gameState = gp.playState;
@@ -400,12 +486,14 @@ public class Movement implements KeyListener {
     public void QuestionState8(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -414,8 +502,16 @@ public class Movement implements KeyListener {
             if(code == KeyEvent.VK_ENTER){
             
                 if(gp.ui.commandNum == 0){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj8();
+                    
+                    if(QuesLimitDrop8 == 1) {
+                        gp.aSetter.setObj8();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop8 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 if(gp.ui.commandNum == 1){
                     gp.gameState = gp.playState;
@@ -430,12 +526,14 @@ public class Movement implements KeyListener {
     public void QuestionState9(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -450,8 +548,16 @@ public class Movement implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if(gp.ui.commandNum == 2){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj9();
+                    
+                    if(QuesLimitDrop9 == 1) {
+                        gp.aSetter.setObj9();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop9 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 
             }
@@ -460,12 +566,14 @@ public class Movement implements KeyListener {
     public void QuestionState10(int code){
         if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
+                gp.playSFX(4);
                     if(gp.ui.commandNum < 0){
                         gp.ui.commandNum = 2;
                     }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
+                gp.playSFX(4);
                     if(gp.ui.commandNum > 2){
                         gp.ui.commandNum = 0;
                     }
@@ -477,8 +585,16 @@ public class Movement implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if(gp.ui.commandNum == 1){
-                    gp.gameState = gp.playState;
-                    gp.aSetter.setObj10();
+                    
+                    if(QuesLimitDrop10 == 1) {
+                        gp.aSetter.setObj10();
+                        gp.gameState = gp.playState;
+                    }
+                    
+                    if(QuesLimitDrop10 >= 1){
+                        gp.gameState = gp.playState;
+                    }
+                    
                 }
                 if(gp.ui.commandNum == 2){
                     gp.gameState = gp.playState;

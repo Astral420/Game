@@ -33,10 +33,10 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-//        worldX = gp.TileSize * 42;
-//        worldY = gp.TileSize * 4;
-        worldX = gp.TileSize * 32;
-        worldY = gp.TileSize * 33;
+        worldX = gp.TileSize * 42;
+        worldY = gp.TileSize * 4;
+//        worldX = gp.TileSize * 32;
+//        worldY = gp.TileSize * 33;
         speed = 4;
         Direction = "down";
     }
@@ -168,33 +168,63 @@ public class Player extends Entity {
 
                     if(gp.NPC[i] == gp.NPC[0]){
                 gp.gameState = gp.questionState1;
+                    if(gp.ui.commandNum == 0){
+                    move.QuesLimitDrop1++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[1]){
                 gp.gameState = gp.questionState2;
+                    if(gp.ui.commandNum == 1){
+                    move.QuesLimitDrop2++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[2]){
                 gp.gameState = gp.questionState3;
+                    if(gp.ui.commandNum == 2){
+                    move.QuesLimitDrop3++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[3]){
                 gp.gameState = gp.questionState4;
+                    if(gp.ui.commandNum == 2){
+                    move.QuesLimitDrop4++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[4]){
                 gp.gameState = gp.questionState5;
+                    if(gp.ui.commandNum == 0){
+                    move.QuesLimitDrop5++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[5]){
                 gp.gameState = gp.questionState6;
+                    if(gp.ui.commandNum == 1){
+                    move.QuesLimitDrop6++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[6]){
                 gp.gameState = gp.questionState7;
+                    if(gp.ui.commandNum == 1){
+                    move.QuesLimitDrop7++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[7]){
                 gp.gameState = gp.questionState8;
+                    if(gp.ui.commandNum == 0){
+                    move.QuesLimitDrop8++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[8]){
                 gp.gameState = gp.questionState9;
+                    if(gp.ui.commandNum == 2){
+                    move.QuesLimitDrop9++;
+                    }
                 }
                     if(gp.NPC[i] == gp.NPC[9]){
                 gp.gameState = gp.questionState10;
+                    if(gp.ui.commandNum == 1){
+                    move.QuesLimitDrop10++;
+                    }
                 }
             }
 

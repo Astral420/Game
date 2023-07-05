@@ -312,6 +312,7 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
+        
         x = gp.screenWidth/2 - (gp.TileSize*3)/2;
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
@@ -326,7 +327,7 @@ public class UI {
         }
         
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "LEADERBOARDS";
+        text = "LEADERBOARD(soon)";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -342,7 +343,13 @@ public class UI {
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,15F));
+        text = "V.1.1";
+        x = gp.TileSize*14;
+        y = gp.TileSize*12-8;
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
     }
     public void drawSubWindow(int x, int y, int width, int height){
         Color c = new Color(0,0,0,200);
@@ -368,23 +375,28 @@ public class UI {
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 1: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
-
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "What is the center of our solar system?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+         
         x = gp.screenWidth/2 - (gp.TileSize*3)/2;
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT CORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. Sun";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -392,8 +404,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. Mars";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -401,8 +413,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. Earth";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -410,20 +422,32 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen2(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 2: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
-
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+         text = "Who is known for his contributions";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        text = "to the theory of gravity, motion, and calculus?";
+        x = gp.TileSize*2;
+        y = gp.TileSize*3;
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
@@ -431,8 +455,8 @@ public class UI {
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. Albert Einstein";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -440,8 +464,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT CORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. Isaac Newton";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -449,29 +473,36 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. Galileo Galilei";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen3(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 3: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
-
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "How many degrees are in a right angle?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
@@ -479,8 +510,8 @@ public class UI {
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. 120 degrees";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -488,8 +519,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. 45 degrees";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -497,38 +528,55 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT CORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. 90 degrees";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen4(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+        
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 4: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
-
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "What is the area of a square with side";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "length 6 units?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*3;
+        
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
         
         x = gp.screenWidth/2 - (gp.TileSize*3)/2;
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. 12 square units";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -536,8 +584,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. 24 square units";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -545,29 +593,44 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT CORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. 36 square units";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen5(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 5: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
-
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "Who is often credited with painting";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "the \"Mona Lisa\"?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*3;
+        
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
@@ -575,8 +638,8 @@ public class UI {
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT CORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. Leonardo da Vinci";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -584,8 +647,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. Vincent van Gogh";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -593,29 +656,44 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. Michelangelo";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen6(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 6: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
-
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "The Philippines gained its independence";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "from the United States in which year?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*3;
+        
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
@@ -623,8 +701,8 @@ public class UI {
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. 1965";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -632,8 +710,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT CORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. 1946";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -641,29 +719,44 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. 1898";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen7(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 7: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
-
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "What is the meaning of the idiom";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "\"break a leg\"?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*3;
+        
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
@@ -671,8 +764,8 @@ public class UI {
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. To hurt one's leg";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -680,8 +773,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT CORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. To have good luck";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -689,29 +782,36 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. To take a risk";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen8(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 8: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
-
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "What is the correct spelling?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
@@ -719,8 +819,8 @@ public class UI {
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-       g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT CORRECT ANSWER)";
+       g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. Necessary";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -728,8 +828,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. Neccessary";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -737,29 +837,36 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. Neccessary";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen9(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+       g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 9: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
-
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "What is the oldest city in the Philippines?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
@@ -767,8 +874,8 @@ public class UI {
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT INCORRECT ANSWER)";
+       g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. Vigan City";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -776,8 +883,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B. Manila City";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -785,29 +892,44 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT CORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. Cebu City";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     public void drawQuestionScreen10(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         String text = "Level 10: ";
-        int x = getXforCenteredText(text);
-        int y = gp.TileSize*3;
+        int x = gp.TileSize;
+        int y = gp.TileSize;
 
-        g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
-
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "What is the value of π (pi) to five";
+         x = gp.TileSize*2;
+         y = gp.TileSize*2;
+        
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,35F));
+         text = "decimal places?";
+         x = gp.TileSize*2;
+         y = gp.TileSize*3;
+        
         g2.setColor(Color.white);
         g2.drawString(text,x,y);
         
@@ -815,8 +937,8 @@ public class UI {
         y += gp.TileSize;
         g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "A. (PUT INCORRECT ANSWER";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "A. 3.14169";
         x = getXforCenteredText(text);
         y += gp.TileSize*4;
         g2.drawString(text, x, y);
@@ -824,8 +946,8 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "B. (PUT CORRECT ANSWER))";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "B.  3.14159";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
@@ -833,15 +955,17 @@ public class UI {
             g2.drawString(">", x-gp.TileSize, y);
         }
         
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
-        text = "C. (PUT INCORRECT ANSWER)";
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        text = "C. 3.14156";
         x = getXforCenteredText(text);
         y += gp.TileSize;
         g2.drawString(text, x, y);
         if(commandNum == 2){
             g2.drawString(">", x-gp.TileSize, y);
         }
-        
+        playTime +=(double)1/60;
+        g2.setFont(g2.getFont().deriveFont(24F));
+        g2.drawString("Time: " + df.format(playTime),gp.TileSize*12,30);
     }
     
     

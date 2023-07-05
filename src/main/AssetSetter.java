@@ -106,36 +106,36 @@ public class AssetSetter {
         
         gp.obj[mapNum][0] = new Obj_Obstacle();
         gp.obj[mapNum][0].worldX = 38 * gp.TileSize;
-        gp.obj[mapNum][0].worldY = 25 * gp.TileSize;
+        gp.obj[mapNum][0].worldY = 26 * gp.TileSize;
     
         gp.obj[mapNum][2] = new Obj_Obstacle();
         gp.obj[mapNum][2].worldX = 22 * gp.TileSize;
-        gp.obj[mapNum][2].worldY = 30 * gp.TileSize;
+        gp.obj[mapNum][2].worldY = 31 * gp.TileSize;
 
         
         gp.obj[mapNum][4] = new Obj_Obstacle();
-        gp.obj[mapNum][4].worldX = 35 * gp.TileSize;
+        gp.obj[mapNum][4].worldX = 37 * gp.TileSize;
         gp.obj[mapNum][4].worldY = 34 * gp.TileSize;
 
         
         gp.obj[mapNum][6] = new Obj_Obstacle();
-        gp.obj[mapNum][6].worldX = 31 * gp.TileSize;
+        gp.obj[mapNum][6].worldX = 27 * gp.TileSize;
         gp.obj[mapNum][6].worldY = 40 * gp.TileSize;
 
         
         gp.obj[mapNum][8] = new Obj_Obstacle();
-        gp.obj[mapNum][8].worldX = 18 * gp.TileSize;
+        gp.obj[mapNum][8].worldX = 15 * gp.TileSize;
         gp.obj[mapNum][8].worldY = 38 * gp.TileSize;
 
         
         gp.obj[mapNum][10] = new Obj_Obstacle();
         gp.obj[mapNum][10].worldX = 12 * gp.TileSize;
-        gp.obj[mapNum][10].worldY = 29 * gp.TileSize;
+        gp.obj[mapNum][10].worldY = 28 * gp.TileSize;
 
         
         gp.obj[mapNum][12] = new Obj_Obstacle();
         gp.obj[mapNum][12].worldX = 20 * gp.TileSize;
-        gp.obj[mapNum][12].worldY = 17 * gp.TileSize;
+        gp.obj[mapNum][12].worldY = 15 * gp.TileSize;
 
         
         gp.obj[mapNum][14] = new Obj_Obstacle();
@@ -144,7 +144,7 @@ public class AssetSetter {
 
         
         gp.obj[mapNum][16] = new Obj_Obstacle();
-        gp.obj[mapNum][16].worldX = 21 * gp.TileSize;
+        gp.obj[mapNum][16].worldX = 18 * gp.TileSize;
         gp.obj[mapNum][16].worldY = 7 * gp.TileSize;
 
         

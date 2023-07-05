@@ -40,27 +40,33 @@ public class NPC_7 extends Entity {
                 Direction = "left";
             }
         }
-        if (actionLockCounter == 235) {
+        if (actionLockCounter == 335) {
             if (Direction == "left") {
                 Direction = "up";
             }
         }
-        if (actionLockCounter == 335) {
+        if (actionLockCounter == 475) {
             if (Direction == "up") {
                 Direction = "right";
             }
         }
-        if (actionLockCounter == 570) {
+        if (actionLockCounter == 720) {
             if (Direction == "right") {
                 Direction = "down";
 
             }
         }
-        if (actionLockCounter == 660) {
+        if (actionLockCounter == 860) {
             if (Direction == "down") {
                 Direction = "left";
 
-            }actionLockCounter = 0;
+            }
+        }
+        if (actionLockCounter == 1100) {
+            if (Direction == "left") {
+                Direction = "up";
+
+            }actionLockCounter = 330;
         }
 
 //            Random random = new Random();

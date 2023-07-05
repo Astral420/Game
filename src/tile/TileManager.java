@@ -18,11 +18,11 @@ public class TileManager {
     public int mapTileNum[][][];
     public TileManager(GamePanel gp) {
         this.gp = gp;
-        tile = new Tiles[200];
+        tile = new Tiles[700];
         mapTileNum = new int[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
         loadMap("/maps/main map txt file.txt",0);
-        loadMap("/maps/map1.txt",1);
+        loadMap("/maps/Cave MapF1txt.txt",1);
     }
 
     public void getTileImage() {
@@ -168,6 +168,30 @@ public class TileManager {
         setup(138, "tileset/side2", false);
         setup(139, "tileset/side7", false);
         setup(140, "tileset/side8", false);
+        setup(141, "tileset/cave/beachcave1", false);
+        setup(142, "tileset/cave/beachcave2", false);
+        setup(143, "tileset/cave/beachcave3", false);
+        setup(144, "tileset/cave/beachcave4", false);
+        setup(144, "tileset/cave/beachcave5", false);
+        setup(145, "tileset/cave/beachcave6", false);
+        setup(146, "tileset/cave/beachcave7", false);
+        setup(147, "tileset/cave/beachcave8", false);
+        setup(148, "tileset/cave/beachcave9", false);
+        setup(149, "tileset/cave/beachcave10", false);
+        setup(150, "tileset/cave/beachcave11", false);
+        setup(151, "tileset/cave/beachcave12", false);
+        setup(152, "tileset/cave/beachcave13", false);
+        setup(153, "tileset/cave/beachcave14", false);
+        setup(154, "tileset/cave/beachcave15", false);
+        setup(155, "tileset/cave/beachcave16", false);
+        setup(156, "tileset/cave/beachcave17", false);
+        setup(157, "tileset/cave/beachcave18", false);
+        setup(158, "tileset/cave/beachcave19", false);
+        setup(159, "tileset/cave/beachcave20", false);
+        setup(160, "tileset/cave/beachcave21", false);
+        setup(161, "tileset/cave/beachcave22", false);
+        setup(162, "tileset/cave/cave722", false);
+        setup(163, "tileset/cave/beachcave23", false);
 
 
 

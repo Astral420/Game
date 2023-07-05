@@ -35,32 +35,39 @@ public class NPC_4 extends Entity {
 
         actionLockCounter++;
 
-        if (actionLockCounter == 140) {
+        if (actionLockCounter == 190) {
             if (Direction == "down") {
                 Direction = "left";
             }
         }
-        if (actionLockCounter == 235) {
+        if (actionLockCounter == 290) {
             if (Direction == "left") {
                 Direction = "up";
             }
         }
-        if (actionLockCounter == 335) {
+        if (actionLockCounter == 530) {
             if (Direction == "up") {
                 Direction = "right";
             }
         }
-        if (actionLockCounter == 570) {
+        if (actionLockCounter == 670) {
             if (Direction == "right") {
                 Direction = "down";
 
             }
         }
-        if (actionLockCounter == 660) {
+        if (actionLockCounter == 900) {
             if (Direction == "down") {
                 Direction = "left";
 
-            }actionLockCounter = 0;
+            }
+        }
+
+        if (actionLockCounter == 1040) {
+            if (Direction == "left") {
+                Direction = "up";
+
+            }actionLockCounter = 300;
         }
 
 //            Random random = new Random();

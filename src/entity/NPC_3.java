@@ -66,7 +66,7 @@ public class NPC_3 extends Entity {
             if (Direction == "left") {
                 Direction = "up";
 
-            }actionLockCounter = 80;
+            }actionLockCounter = 120;
         }
 
 //            Random random = new Random();
