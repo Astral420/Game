@@ -7,7 +7,8 @@ import java.security.Key;
 
 public class Movement implements KeyListener {
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, EscPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
+    boolean showDebugText;
 
     public Movement(GamePanel gp){
         this.gp = gp;
@@ -24,21 +25,38 @@ public class Movement implements KeyListener {
         
         if(gp.gameState == gp.titleState){
             titleState(code);
-
-            
         }
-        
         if(gp.gameState == gp.playState){
             playState(code);
+
         }
+        
         else if (gp.gameState == gp.pauseState){
             pauseState(code);
-        }
-        else if (gp.gameState == gp.dialogueState){
-            dialogueState(code);
-
-        } else if (gp.gameState == gp.optionState) {
+        }else if (gp.gameState == gp.optionState) {
             optionState(code);
+        }
+        
+        else if (gp.gameState == gp.questionState1){
+            QuestionState1(code);
+        }else if (gp.gameState == gp.questionState2){
+            QuestionState2(code);
+        }else if (gp.gameState == gp.questionState3){
+            QuestionState3(code);
+        }else if (gp.gameState == gp.questionState4){
+            QuestionState4(code);
+        }else if (gp.gameState == gp.questionState5){
+            QuestionState5(code);
+        }else if (gp.gameState == gp.questionState6){
+            QuestionState6(code);
+        }else if (gp.gameState == gp.questionState7){
+            QuestionState7(code);
+        }else if (gp.gameState == gp.questionState8){
+            QuestionState8(code);
+        }else if (gp.gameState == gp.questionState9){
+            QuestionState9(code);
+        }else if (gp.gameState == gp.questionState10){
+            QuestionState10(code);
         }
 
 
@@ -94,6 +112,13 @@ public class Movement implements KeyListener {
         if(code == KeyEvent.VK_ESCAPE){
             gp.gameState = gp.optionState;
         }
+        if (code == KeyEvent.VK_T){
+            if (showDebugText == false){
+                showDebugText = true;
+            } else if (showDebugText == true) {
+                showDebugText = false;
+            }
+        }
     }
     public void optionState(int code){
         if(code == KeyEvent.VK_ESCAPE){
@@ -103,24 +128,313 @@ public class Movement implements KeyListener {
             enterPressed = true;
         }
     }
-    public void dialogueState(int code){
-        if(code == KeyEvent.VK_ENTER){
-            gp.gameState = gp.playState;
-        } else if (gp.gameState == gp.optionState) {
-            if (code == KeyEvent.VK_ESCAPE){
-                gp.gameState = gp.optionState;
-            }
-        }
-    }
     public void pauseState(int code){
         if(code == KeyEvent.VK_P){
             gp.gameState = gp.playState;
 
         }
     }
-
-
-
+    
+    
+    public void QuestionState1(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj1();
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                }
+                
+            }
+    }
+    
+    public void QuestionState2(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj2();
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                }
+                
+            }
+    }
+    
+    public void QuestionState3(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj3();
+                }
+                
+            }
+    }
+    
+    public void QuestionState4(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj4();
+                }
+                
+            }
+    }
+    
+    public void QuestionState5(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj5();
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                }
+                
+            }
+    }
+    
+    public void QuestionState6(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj6();
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                }
+                
+            }
+    }
+    
+    public void QuestionState7(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj7();
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                }
+                
+            }
+    }
+    
+    public void QuestionState8(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj8();
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                }
+                
+            }
+    }
+    
+    public void QuestionState9(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj9();
+                }
+                
+            }
+    }
+    
+    public void QuestionState10(int code){
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                    if(gp.ui.commandNum < 0){
+                        gp.ui.commandNum = 2;
+                    }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                    if(gp.ui.commandNum > 2){
+                        gp.ui.commandNum = 0;
+                    }
+            }
+            
+            if(code == KeyEvent.VK_ENTER){
+            
+                if(gp.ui.commandNum == 0){
+                    gp.gameState = gp.playState;
+                }
+                if(gp.ui.commandNum == 1){
+                    gp.gameState = gp.playState;
+                    gp.aSetter.setObj10();
+                }
+                if(gp.ui.commandNum == 2){
+                    gp.gameState = gp.playState;
+                }
+                
+            }
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {

@@ -60,7 +60,7 @@ public class CollisionChecker {
     }
     public int checkObj(Entity entity, boolean player){
         int index = 999;
-        for (int i = 0; i < gp.obj.length; i++){
+        for (int i = 0; i < gp.obj[gp.currentMap].length; i++){
             if (gp.obj[gp.currentMap][i] != null){
 
                 entity.solidArea.x = entity.solidAreaDefaultX;

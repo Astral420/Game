@@ -33,8 +33,10 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        worldX = gp.TileSize * 42;
-        worldY = gp.TileSize * 4;
+//        worldX = gp.TileSize * 42;
+//        worldY = gp.TileSize * 4;
+        worldX = gp.TileSize * 32;
+        worldY = gp.TileSize * 33;
         speed = 4;
         Direction = "down";
     }
@@ -79,8 +81,10 @@ public class Player extends Entity {
             int objIndex = gp.cChecker.checkObj(this, true);
             pickupObj(objIndex);
             
-            int npcIndex = gp.cChecker.checkEntity(this, gp.NPC[1]);
+            int npcIndex = gp.cChecker.checkEntity(this, gp.NPC[gp.currentMap]);
             interactNPC(npcIndex);
+
+            gp.eHandler.checkEvent();
 
             if(collisionOn == false){
 
@@ -161,8 +165,37 @@ public class Player extends Entity {
     
         if (i != 999){
             if (gp.movement.enterPressed == true){
-                gp.gameState = gp.dialogueState;
-                gp.NPC[gp.currentMap][i].speak();
+
+                    if(gp.NPC[i] == gp.NPC[0]){
+                gp.gameState = gp.questionState1;
+                }
+                    if(gp.NPC[i] == gp.NPC[1]){
+                gp.gameState = gp.questionState2;
+                }
+                    if(gp.NPC[i] == gp.NPC[2]){
+                gp.gameState = gp.questionState3;
+                }
+                    if(gp.NPC[i] == gp.NPC[3]){
+                gp.gameState = gp.questionState4;
+                }
+                    if(gp.NPC[i] == gp.NPC[4]){
+                gp.gameState = gp.questionState5;
+                }
+                    if(gp.NPC[i] == gp.NPC[5]){
+                gp.gameState = gp.questionState6;
+                }
+                    if(gp.NPC[i] == gp.NPC[6]){
+                gp.gameState = gp.questionState7;
+                }
+                    if(gp.NPC[i] == gp.NPC[7]){
+                gp.gameState = gp.questionState8;
+                }
+                    if(gp.NPC[i] == gp.NPC[8]){
+                gp.gameState = gp.questionState9;
+                }
+                    if(gp.NPC[i] == gp.NPC[9]){
+                gp.gameState = gp.questionState10;
+                }
             }
 
         }

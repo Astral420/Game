@@ -1,17 +1,14 @@
 package main;
 
 import entity.Entity;
-import entity.NPC_Boss;
 import entity.Player;
 import objects.SuperObj;
 import tile.TileManager;
 
 
 import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.Dimension;
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
+
 public class GamePanel extends JPanel implements Runnable {
 
     public final int originalTileSize = 16;
@@ -39,16 +36,27 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this,movement);
-    public SuperObj obj[][] = new SuperObj[maxMap][100];
-    public Entity NPC [] []= new Entity[maxMap][3];
+    public SuperObj obj[][] = new SuperObj[maxMap][999];
+    public Entity NPC [][]= new Entity[maxMap][100];
+
+    public EventHandler eHandler = new EventHandler(this);
 
     public int gameState;
     public final int playState = 1;
     public final int pauseState = 2;
-    public final int dialogueState = 3;
     public final int titleState = 0;
     public final int optionState = 4;
-
+    public final int questionState1 = 10;
+    public final int questionState2 = 11;
+    public final int questionState3 = 12;
+    public final int questionState4 = 13;
+    public final int questionState5 = 14;
+    public final int questionState6 = 15;
+    public final int questionState7 = 16;
+    public final int questionState8 = 17;
+    public final int questionState9 = 18;
+    public final int questionState10 = 19;
+    
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -59,8 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setupGame(){
-
-        aSetter.setObj();
+        aSetter.setObs();
         aSetter.setNPC();
        // playMusic(0);
         gameState = titleState;
@@ -142,6 +149,20 @@ public class GamePanel extends JPanel implements Runnable {
             }
             player.draw(g2);
             ui.draw(g2);
+        }
+        if (movement.showDebugText == true){
+            g2.setFont(new Font("Arial",Font.PLAIN,20));
+            g2.setColor(Color.white);
+            int x = 10;
+            int y = 400;
+            int lineHeight = 20;
+
+            g2.drawString("World X: " + player.worldX,x,y); y += lineHeight;
+            g2.drawString("World Y: " + player.worldY,x,y); y += lineHeight;
+            g2.drawString("Col: " + (player.worldX + player.solidArea.x)/ TileSize,x,y); y += lineHeight;
+            g2.drawString("Row: " + (player.worldY + player.solidArea.y)/TileSize,x,y); y += lineHeight;
+
+
         }
 
         g2.dispose();

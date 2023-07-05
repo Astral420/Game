@@ -73,13 +73,39 @@ public class UI {
         if(gp.gameState == gp.pauseState){
             drawPauseScreen();
         }
-        if (gp.gameState == gp.dialogueState){
-            drawDialogueScreen();
-        }
         if (gp.gameState == gp.optionState){
             drawOptionScreen();
+            
+        }if (gp.gameState == gp.questionState1){
+            drawQuestionScreen1();
         }
-
+        if (gp.gameState == gp.questionState2){
+            drawQuestionScreen2();
+        }
+        if (gp.gameState == gp.questionState3){
+            drawQuestionScreen3();
+        }
+        if (gp.gameState == gp.questionState4){
+            drawQuestionScreen4();
+        }
+        if (gp.gameState == gp.questionState5){
+            drawQuestionScreen5();
+        }
+        if (gp.gameState == gp.questionState6){
+            drawQuestionScreen6();
+        }
+        if (gp.gameState == gp.questionState7){
+            drawQuestionScreen7();
+        }
+        if (gp.gameState == gp.questionState8){
+            drawQuestionScreen8();
+        }
+        if (gp.gameState == gp.questionState9){
+            drawQuestionScreen9();
+        }
+        if (gp.gameState == gp.questionState10){
+            drawQuestionScreen10();
+        }
           
 }
 
@@ -137,22 +163,22 @@ public class UI {
         
         g2.drawString(text, x, y);
     }
-    public void drawDialogueScreen(){
-        int x = gp.TileSize*2,
-         y = gp.TileSize/2,
-         width = gp.screenWidth - (gp.TileSize * 4),
-         height = gp.TileSize*4 ;
-        drawSubWindow(x,y,width,height);
-
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
-        x += gp.TileSize;
-        y += gp.TileSize;
-        for (String line : currentDialogue.split("\n")) {
-            g2.drawString(line, x, y);
-            y += 40;
-        }
-
-    }
+//    public void drawDialogueScreen(){
+//        int x = gp.TileSize*2,
+//         y = gp.TileSize/2,
+//         width = gp.screenWidth - (gp.TileSize * 4),
+//         height = gp.TileSize*4 ;
+//        drawSubWindow(x,y,width,height);
+//
+//        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
+//        x += gp.TileSize;
+//        y += gp.TileSize;
+//        for (String line : currentDialogue.split("\n")) {
+//            g2.drawString(line, x, y);
+//            y += 40;
+//        }
+//
+//    }
     public void drawTitleScreen(){
         g2.setColor(new Color(0,0,0));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
@@ -218,4 +244,487 @@ public class UI {
         int x = gp.screenWidth/2 - length/2;
         return x;
     }
+    
+    public void drawQuestionScreen1(){
+        
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 1: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen2(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 2: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen3(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 3: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen4(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 4: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen5(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 5: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen6(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 6: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen7(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 7: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen8(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 8: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+       g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen9(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 9: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT CORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    public void drawQuestionScreen10(){
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Level 10: ";
+        int x = getXforCenteredText(text);
+        int y = gp.TileSize*3;
+
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+        
+        x = gp.screenWidth/2 - (gp.TileSize*3)/2;
+        y += gp.TileSize;
+        g2.drawImage(gp.player.down1, x, y, gp.TileSize*3, gp.TileSize*3, null);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "A. (PUT INCORRECT ANSWER";
+        x = getXforCenteredText(text);
+        y += gp.TileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "B. (PUT CORRECT ANSWER))";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,36F));
+        text = "C. (PUT INCORRECT ANSWER)";
+        x = getXforCenteredText(text);
+        y += gp.TileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x-gp.TileSize, y);
+        }
+        
+    }
+    
+    
 }
