@@ -110,49 +110,167 @@ public class UI {
 }
 
     public void drawOptionScreen() {
-        g2.setColor(Color.WHITE);
-        g2.setFont(g2.getFont().deriveFont(32F));
-
-        int frameX = gp.TileSize*4;
+        g2.setColor(Color.white);
+        int frameX = gp.TileSize*5;
         int frameY = gp.TileSize;
         int frameWidth = gp.TileSize*8;
-        int frameHeight = gp.TileSize*9;
-        drawSubWindow(frameX,frameY,frameWidth,frameHeight);
+        int frameHeight = gp.TileSize*10;
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+        switch (substate) {
+            case 0: options_top(frameX, frameY); break;
+            case 1:  options_control(frameX,frameY);break;
+            case 2:  options_endGameConfirmation(frameX,frameY);break;
+        }
+        gp.movement.enterPressed = false;
+    }
 
-        switch (substate){
-            case 0:
-                options_top( frameX,  frameY);
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
+    public void options_endGameConfirmation(int frameX, int frameY) {
+        int textX = frameX + gp.TileSize;
+        int textY = frameY + gp.TileSize*3;
 
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 35F));
+        currentDialogue = "Quit and return \nto Main Menu?";
+        for(String line: currentDialogue.split("\n")){
+            g2.drawString(line,textX+20,textY+20);
+            textY += 40;
         }
 
+        String text = "Yes";
+        textX = getXforCenteredText(text);
+        textY += gp.TileSize*3;
+        g2.drawString(text,textX,textY);
+        if(commandNum == 0){
+            g2.drawString(">", textX-25, textY);
+            if(gp.movement.enterPressed == true){
+                substate = 0;
+                gp.currentMap = 0;
+                gp.gameState = gp.titleState;
+                gp.stopMusic();
+            }
+        }
+        text = "No";
+        textX = getXforCenteredText(text);
+        textY += gp.TileSize;
+        g2.drawString(text,textX,textY);
+        if(commandNum == 1){
+            g2.drawString(">", textX-25, textY);
+            if(gp.movement.enterPressed == true){
+                substate = 0;
+                commandNum = 4;
+            }
+        }
     }
+
     public void options_top(int frameX, int frameY){
         int textX;
         int textY;
 
-        String text = "Options";
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 50F));
+        String txt = "Options";
+        textX = getXforCenteredText(txt);
+        textY = frameY + gp.TileSize+15;
+        g2.drawString(txt, textX, textY);
+
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28F));
+        textX = frameX + gp.TileSize;
+        textY += gp.TileSize*2;
+        g2.drawString("Music", textX, textY);
+        if (commandNum == 0) {
+            g2.drawString(">", textX-25, textY);
+        }
+
+        textY += gp.TileSize*1.3;
+        g2.drawString("SFX", textX, textY);
+        if (commandNum == 1) {
+            g2.drawString(">", textX-25, textY);
+            if (gp.movement.enterPressed == true) {
+            }
+        }
+
+        textY += gp.TileSize*1.3;
+        g2.drawString("Controls", textX, textY);
+        if (commandNum == 2) {
+            g2.drawString(">", textX-25, textY);
+            if (gp.movement.enterPressed == true) {
+                substate = 1;
+                commandNum = 0;
+
+            }
+        }
+
+        textY += gp.TileSize*1.3;
+        g2.drawString("Quit", textX, textY);
+        if (commandNum == 3) {
+            g2.drawString(">", textX-25, textY);
+            if (gp.movement.enterPressed == true) {
+                substate = 2;
+                commandNum = 0;
+            }
+        }
+
+        textY += gp.TileSize*1.3;
+        g2.drawString("Close", textX, textY);
+        if (commandNum == 4) {
+            g2.drawString(">", textX-25, textY);
+            if (gp.movement.enterPressed == true) {
+                gp.gameState = gp.playState;
+                commandNum = 0;
+            }
+        }
+
+        textX = frameX + (int)(gp.TileSize*4.5);
+        textY = frameY + gp.TileSize*2 + 40;
+        g2.setStroke(new BasicStroke(3));
+        g2.drawRect(textX,textY,120,24);
+        int volumeWidth = 24 * gp.music.volumeScale;
+        g2.fillRect(textX, textY, volumeWidth, 24);
+
+        textY += gp.TileSize+12;
+        g2.drawRect(textX,textY,120,24);
+        volumeWidth = 24 * gp.SFX.volumeScale;
+        g2.fillRect(textX, textY, volumeWidth, 24);
+
+        gp.config.saveConfig();
+    }
+
+    public void options_control(int frameX, int frameY){
+
+        int textX;
+        int textY;
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28F));
+
+        String text = "Controls";
         textX = getXforCenteredText(text);
         textY = frameY + gp.TileSize;
         g2.drawString(text,textX,textY);
 
         textX = frameX + gp.TileSize;
         textY += gp.TileSize;
-        g2.drawString("Music",textX,textY);
+        g2.drawString("Move", textX, textY+20); textY+=gp.TileSize;
+        g2.drawString("Talk", textX, textY+60); textY+=gp.TileSize;
+        g2.drawString("Pause", textX, textY+80); textY+=gp.TileSize;
+        g2.drawString("Options", textX, textY+100); textY+=gp.TileSize;
 
-        textY += gp.TileSize;
-        g2.drawString("SFX",textX,textY);
+        textX = frameX + gp.TileSize*6;
+        textY = frameY + gp.TileSize*2;
+        g2.drawString("WASD",textX,textY+20); textY += gp.TileSize;
+        g2.drawString("Enter",textX,textY+60); textY += gp.TileSize;
+        g2.drawString("P",textX,textY+80); textY += gp.TileSize;
+        g2.drawString("ESC",textX,textY+100); textY += gp.TileSize;
 
-        textY += gp.TileSize;
-        g2.drawString("Exit",textX,textY);
-
-        textY += gp.TileSize*2.5;
-        g2.drawString("Back",textX,textY);
-
+        textX = frameX + gp.TileSize;
+        textY = frameY + gp.TileSize*9;
+        g2.drawString("Back",textX,textY+20);
+        if(commandNum == 0){
+            g2.drawString(">", textX-25,textY+20);
+            if(gp.movement.enterPressed == true){
+                substate = 0;
+            }
+        }
     }
 
     public void drawPauseScreen(){

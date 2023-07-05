@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Movement movement = new Movement(this);
     Sound SFX = new Sound();
     public Sound music = new Sound();
+    Config config = new Config(this);
     public UI ui = new UI(this);
     Thread gameThread;
     
@@ -69,7 +70,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
         aSetter.setObs();
         aSetter.setNPC();
-       // playMusic(0);
+        playMusic(0);
         gameState = titleState;
     }
 

@@ -125,9 +125,60 @@ public class Movement implements KeyListener {
             gp.gameState = gp.playState;
         }
         if(code == KeyEvent.VK_ENTER){
+            if (gp.ui.commandNum == 1){
+
+            }
             enterPressed = true;
         }
+        int maxCommandNum = 0;
+        switch (gp.ui.substate) {
+            case 0: maxCommandNum = 4; break;
+            case 2: maxCommandNum = 1; break;
+        }
+        if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
+            gp.ui.commandNum--;
+            gp.playSFX(4);
+            if (gp.ui.commandNum < 0) {
+                gp.ui.commandNum = maxCommandNum;
+            }
+        }
+        if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
+            gp.ui.commandNum++;
+            gp.playSFX(4);
+            if (gp.ui.commandNum > maxCommandNum) {
+                gp.ui.commandNum = 0;
+            }
+        }
+
+        if(code == KeyEvent.VK_A){
+            if(gp.ui.substate == 0){
+                if(gp.ui.commandNum == 0 && gp.music.volumeScale > 0){
+                    gp.music.volumeScale--;
+                    gp.music.checkVolume();
+                    gp.playSFX(4);
+                }
+                if(gp.ui.commandNum == 1 && gp.SFX.volumeScale > 0){
+                    gp.SFX.volumeScale--;
+                    gp.playSFX(4);
+                }
+            }
+        }
+        if(code == KeyEvent.VK_D){
+            if(gp.ui.substate == 0){
+                if(gp.ui.commandNum == 0 && gp.music.volumeScale < 5){
+                    gp.music.volumeScale++;
+                    gp.music.checkVolume();
+                    gp.playSFX(4);
+                }
+                if(gp.ui.commandNum == 1 && gp.SFX.volumeScale < 5){
+                    gp.SFX.volumeScale++;
+                    gp.playSFX(4);
+                }
+            }
+        }
     }
+
+
     public void pauseState(int code){
         if(code == KeyEvent.VK_P){
             gp.gameState = gp.playState;
